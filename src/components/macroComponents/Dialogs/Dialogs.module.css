@@ -7,14 +7,14 @@
     padding: 10px;
 }
 .dialog{
-
+    color: white;
 }
 .messages{
     width: 80%;
     padding: 10px;
 }
 .message{
-
+    color: #004962;
 }
 .active{
     color: gold;
