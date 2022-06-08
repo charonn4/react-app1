@@ -1,13 +1,29 @@
 .nav{
     display: flex;
     flex-direction: column;
-    background: red;
-    width: 25%;
-    height: 100%;
+    background: #cfcccc;
+    width: 20%;
+    height: calc(100vh - 86px);
+    padding: 16px 12px;
+    gap: 24px;
 }
-.item{
-    color: white;
+.item {
+    color: #585757;
+    text-decoration: none;
+    padding: 9px 13px;
+    width: 100%;
+    border-radius: 10px;
+}
+.item:hover{
+    background-color: #d5d6d9;
+    transition: .3s all;
 }
 .active{
-    color: gold;
+    color: #2a41e8;
+    text-decoration: none;
+    padding: 9px 13px;
+    background: rgba(42, 65, 232, 0.07);
+    border-radius: 10px;
+    width: 100%;
+
 }

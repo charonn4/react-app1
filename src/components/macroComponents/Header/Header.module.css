@@ -1,6 +1,8 @@
 .header{
-    background: aqua;
+    background: #e8e3e3;
     width: 100%;
+    padding: 8px 16px;
+    height: 38px;
 }
 .header img{
     width: 60px;
