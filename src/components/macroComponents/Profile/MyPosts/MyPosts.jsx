@@ -2,13 +2,10 @@ import React from "react";
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-const MyPosts = () => {
+const MyPosts = (props) => {
 
-    let postsData = [
-        {id:1, message: "first post", likes:4},
-        {id:2, message: 'second post', likes:13},
-        {id:3, message: 'third post', likes:200},
-    ]
+    let postsElements = props.posts
+        .map( p => <Post message={p.message} likes={p.likes}/> )
 
     return (
         <div className={style.postsBlock}>
@@ -24,9 +21,7 @@ const MyPosts = () => {
 
             </div>
             <div className={style.posts}>
-                <Post message={postsData[0].message} likes={postsData[0].likes}/>
-                <Post message={postsData[1].message} likes={postsData[1].likes}/>
-                <Post message={postsData[2].message} likes={postsData[2].likes}/>
+                { postsElements }
             </div>
         </div>
     )

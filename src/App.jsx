@@ -9,7 +9,8 @@ import Music from "./components/macroComponents/Music/Music";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Settings from "./components/macroComponents/Settings/Settings";
 
-const App = () => {
+const App = (props) => {
+
     return (
         <BrowserRouter>
             <div className="App">
@@ -18,8 +19,8 @@ const App = () => {
                     <NavBar/>
                     <div className="pages">
                         <Routes>
-                            <Route path='/profile/*' element={ <Profile /> }/>
-                            <Route path='/dialogs/*' element={ <Dialogs /> }/>
+                            <Route path='/profile/*' element={ <Profile posts={props.posts} /> }/>
+                            <Route path='/dialogs/*' element={ <Dialogs dialogs={props.dialogs} messages={props.messages} /> }/>
                             <Route path='/news/*' element={ <News /> }/>
                             <Route path='/music/*' element={ <Music /> }/>
                             <Route path='/settings/*' element={ <Settings /> }/>
