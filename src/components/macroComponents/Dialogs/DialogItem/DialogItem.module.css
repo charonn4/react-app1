@@ -1,3 +1,17 @@
+.dialog{
+    padding: 16px 32px;
+    background: #f7f8fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.dialog img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
 .dialog a{
-    color: firebrick;
+    color: #004962;
+    text-decoration: none;
 }

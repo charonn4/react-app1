@@ -15,7 +15,8 @@
 .pages{
     background: white;
     padding: 12px;
-    height: calc(100vh - 78px);
+    /*height: calc(100vh - 78px);*/
+    height: calc(100vh - 62px);
     width: 80%;
     overflow: auto;
 }

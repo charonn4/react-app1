@@ -1,17 +1,32 @@
 .dialogs{
     display: flex;
     width: 100%;
+    overflow: hidden;
 }
 .dialogsItems{
-    width: 20%;
-    padding: 10px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    height: calc(100vh - 82px);
+    overflow: auto;
+    box-shadow:  4px 0px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 .messages{
-    width: 80%;
+    width: 70%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: calc(100vh - 82px);
+    overflow: auto;
 }
 
 .active{
     color: gold;
+}
+.key{
+    font-size: 22px;
 }
