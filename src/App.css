@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+    font-size: 14px;
+}
 .App {
     display: flex;
     flex-direction: column;
@@ -14,9 +18,9 @@
 }
 .pages{
     background: white;
-    padding: 12px;
+    /*padding: 12px;*/
     /*height: calc(100vh - 78px);*/
-    height: calc(100vh - 62px);
+    height: calc(100vh - 42px);
     width: 80%;
     overflow: auto;
 }

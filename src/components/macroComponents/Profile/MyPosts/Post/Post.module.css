@@ -6,3 +6,13 @@
     height: 50px;
     border-radius: 50px;
 }
+.likes{
+    cursor: pointer;
+    color: #333333;
+    transition: .3s all;
+    border: none;
+}
+.likes:hover{
+    color: red;
+    transition: .3s all;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import AddContent from "../../microComponents/AddContent/AddContent";
 
 
 const Dialogs = (props) =>{
@@ -24,12 +25,16 @@ const Dialogs = (props) =>{
                 {/*<DialogItem name={dialogsData[2].name} id={dialogsData[2].id}></DialogItem>*/}
             </div>
             <div className={style.messages}>
-                {
-                    messagesElements
-                }
+                <div className={style.chatElem}>
+                    {
+                        messagesElements
+                    }
+                </div>
+
                 {/*<Message message={messagesData[0].message}></Message>*/}
                 {/*<Message message={messagesData[1].message}></Message>*/}
                 {/*<Message message={messagesData[2].message}></Message>*/}
+                <AddContent addMessage={props.addMessage} addBtn='Send' removeBtn='Clear' pHolder='Введите сообщение'></AddContent>
             </div>
         </div>
     )

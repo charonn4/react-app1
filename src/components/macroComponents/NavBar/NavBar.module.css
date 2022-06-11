@@ -3,9 +3,10 @@
     flex-direction: column;
     background: #cfcccc;
     width: 20%;
-    height: calc(100vh - 86px);
+    height: calc(100vh - 42px);
     padding: 16px 12px;
     gap: 12px;
+    overflow: auto;
 }
 .item {
     color: #585757;
