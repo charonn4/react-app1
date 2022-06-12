@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React from "react";
 import style from './AddContent.module.css'
 import AddBtn from "../AddBtn/AddBtn";
 import RemoveBtn from "../RemoveBtn/RemoveBtn";
@@ -7,24 +7,13 @@ import RemoveBtn from "../RemoveBtn/RemoveBtn";
 
 
 const AddContent = (props) =>{
-
-    let newPostElem = useRef(null)
-
-
-    let addContent = () =>{
-        let text = newPostElem.current.value
-        props.addPost(text)
-        // props.addMessage(text)
-
-    }
-
     return(
         <div>
             <div className={style.dropPost}>
-                <textarea ref={newPostElem} placeholder={props.pHolder} cols="30" rows="10"></textarea>
+                <textarea onChange={props.onChange} ref={props.newContentElem} placeholder={props.pHolder} value={props.newContentText} cols="30" rows="10"/>
             </div>
             <div className={style.btnBlock}>
-                <AddBtn onClick={addContent}>{props.addBtn}</AddBtn>
+                <AddBtn onClick={props.addContent}>{props.addBtn}</AddBtn>
                 <RemoveBtn>{props.removeBtn}</RemoveBtn>
             </div>
         </div>

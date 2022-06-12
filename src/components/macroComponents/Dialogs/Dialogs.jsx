@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useRef} from "react";
 import style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import AddContent from "../../microComponents/AddContent/AddContent";
+
+
 
 
 const Dialogs = (props) =>{
@@ -12,6 +14,20 @@ const Dialogs = (props) =>{
 
     let messagesElements = props.messages
         .map( (m) =>  <Message message={m.message}></Message> )
+
+    let newMessageElem = useRef(null)
+
+    let addContent = () =>{
+        if (props.newMessageText.length > 0){
+            props.addMessage()
+        }
+    }
+
+    let onMessageChange = () =>{
+        let text = newMessageElem.current.value
+        props.updateNewMessageText(text)
+    }
+
     return(
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
@@ -34,7 +50,7 @@ const Dialogs = (props) =>{
                 {/*<Message message={messagesData[0].message}></Message>*/}
                 {/*<Message message={messagesData[1].message}></Message>*/}
                 {/*<Message message={messagesData[2].message}></Message>*/}
-                <AddContent addMessage={props.addMessage} addBtn='Send' removeBtn='Clear' pHolder='Введите сообщение'></AddContent>
+                <AddContent onChange={onMessageChange} newContentText={props.newMessageText} newContentElem={newMessageElem} addContent={addContent} addMessage={props.addMessage} addBtn='Send' removeBtn='Clear' pHolder='Введите сообщение'></AddContent>
             </div>
         </div>
     )

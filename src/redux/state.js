@@ -1,10 +1,13 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     profilePage: {
         posts: [
             {id: 1, message: "first post", likes: 4},
             {id: 2, message: 'second post', likes: 13},
             {id: 3, message: 'third post', likes: 200},
-        ]
+        ],
+        newPostText: 'charon4'
     },
     dialogsPage: {
         dialogs: [
@@ -16,25 +19,42 @@ let state = {
             {id: 1, message: "Hi"},
             {id: 2, message: 'how r u?'},
             {id: 3, message: 'Yea, im fine'},
-        ]
+        ],
+        newMessageText: 'test'
     }
 }
+window.state = state
 
-export let addPost = (postMessage) =>{
+export let addPost = () =>{
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likes: 0
     }
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
 }
 
-export let addMessage = (message) =>{
+export let updateNewPostText = (newText) =>{
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+
+export let addMessage = () =>{
     let newMessage = {
         id:4,
-        message: message
+        message: state.dialogsPage.newMessageText
     }
     state.dialogsPage.messages.push(newMessage)
+    state.profilePage.newMessageText = ''
+    rerenderEntireTree(state)
+}
+
+export let updateNewMessageText = (newText) =>{
+    state.dialogsPage.newMessageText = newText
+    rerenderEntireTree(state)
 }
 
 export default state
