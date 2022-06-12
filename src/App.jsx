@@ -8,7 +8,7 @@ import News from "./components/macroComponents/News/News";
 import Music from "./components/macroComponents/Music/Music";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Settings from "./components/macroComponents/Settings/Settings";
-import {updateNewMessageText, updateNewPostText} from "./redux/state";
+
 
 const App = (props) => {
 
@@ -32,6 +32,7 @@ const App = (props) => {
         </BrowserRouter>
     );
 }
+
 
 
 export default App;

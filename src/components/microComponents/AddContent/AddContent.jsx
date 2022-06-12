@@ -3,9 +3,6 @@ import style from './AddContent.module.css'
 import AddBtn from "../AddBtn/AddBtn";
 import RemoveBtn from "../RemoveBtn/RemoveBtn";
 
-
-
-
 const AddContent = (props) =>{
     return(
         <div>
