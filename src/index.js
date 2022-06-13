@@ -5,17 +5,18 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
 import store from "./redux/state";
+import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderEntireTree = (state) =>{
     root.render(
-        <React.StrictMode>
-            <App state={state} addPost={store.addPost.bind(store)} addMessage={store.addMessage.bind(store)}
-                 updateNewPostText={store.updateNewPostText.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}
-                 newPostText={state.profilePage.newPostText} newMessageText={state.dialogsPage.newMessageText}
-                 posts={state.profilePage.posts} dialogs={state.dialogsPage.dialogs} messages={state.dialogsPage.messages}/>
 
+        <React.StrictMode>
+            <BrowserRouter>
+            <App state={state} dispatch={store.dispatch.bind(store)}
+                 dialogsPage={state.dialogsPage}/>
+                </BrowserRouter>
         </React.StrictMode>
     );
 }

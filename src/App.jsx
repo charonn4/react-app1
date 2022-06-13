@@ -6,22 +6,23 @@ import Profile from "./components/macroComponents/Profile/Profile";
 import Dialogs from "./components/macroComponents/Dialogs/Dialogs";
 import News from "./components/macroComponents/News/News";
 import Music from "./components/macroComponents/Music/Music";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import Settings from "./components/macroComponents/Settings/Settings";
 
 
 const App = (props) => {
 
     return (
-        <BrowserRouter>
+
             <div className="App">
                 <Header/>
                 <div className="content">
                     <NavBar/>
                     <div className="pages">
                         <Routes>
-                            <Route path='/profile/*' element={ <Profile updateNewPostText={props.updateNewPostText} newPostText={props.newPostText} posts={props.posts} addPost={props.addPost} /> }/>
-                            <Route path='/dialogs/*' element={ <Dialogs updateNewMessageText={props.updateNewMessageText} newMessageText={props.newMessageText} dialogs={props.dialogs} messages={props.messages} addMessage={props.addMessage} /> }/>
+                            <Route path='/profile/*' element={ <Profile profilePage={props.state.profilePage} dispatch={props.dispatch} /> }/>
+                            <Route path='/dialogs/*' element={ <Dialogs dispatch={props.dispatch} newMessageText={props.dialogsPage.newMessageText}
+                                                                        dialogs={props.dialogsPage.dialogs} messages={props.dialogsPage.messages} /> }/>
                             <Route path='/news/*' element={ <News /> }/>
                             <Route path='/music/*' element={ <Music /> }/>
                             <Route path='/settings/*' element={ <Settings /> }/>
@@ -29,7 +30,7 @@ const App = (props) => {
                     </div>
                 </div>
             </div>
-        </BrowserRouter>
+
     );
 }
 
