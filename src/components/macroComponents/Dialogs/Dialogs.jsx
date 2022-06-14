@@ -3,9 +3,9 @@ import style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import AddContent from "../../microComponents/AddContent/AddContent";
-import {addMessageActionCreator, updateNewMessageActionCreator} from "../../../redux/dialogs-reducer";
 
 const Dialogs = (props) =>{
+
     let dialogsElements = props.dialogs
         .map( d =>  <DialogItem name={d.name} id={d.id} img={d.img}></DialogItem>  )
 
@@ -17,13 +17,13 @@ const Dialogs = (props) =>{
     let addContent = () =>{
 
         if (props.newMessageText.length > 0){
-            props.dispatch(addMessageActionCreator())
+            props.addMessage()
         }
     }
 
     let onMessageChange = () =>{
         let text = newMessageElem.current.value
-        props.dispatch(updateNewMessageActionCreator(text))
+        props.updateNewMessageText(text)
     }
 
     return(
