@@ -11,7 +11,6 @@ import Settings from "./components/macroComponents/Settings/Settings";
 
 
 const App = (props) => {
-
     return (
 
             <div className="App">
