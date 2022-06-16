@@ -5,12 +5,11 @@ import AddContent from "../../../microComponents/AddContent/AddContent";
 
 const MyPosts = (props) => {
     let postsElements = props.posts
-        .map( p => <Post message={p.message} likes={p.likes}/> )
+        .map( p => <Post message={p.message} key={p.id} likes={p.likes}/> )
 
     let newPostElem = useRef(null)
 
     let addContent = () =>{
-        console.log(props.newPostText)
         if (props.newPostText.length > 0){
             props.addPost()
             // props.dispatch(addPostActionCreator())

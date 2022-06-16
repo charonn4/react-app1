@@ -7,10 +7,10 @@ import AddContent from "../../microComponents/AddContent/AddContent";
 const Dialogs = (props) =>{
 
     let dialogsElements = props.dialogs
-        .map( d =>  <DialogItem name={d.name} id={d.id} img={d.img}></DialogItem>  )
+        .map( d =>  <DialogItem name={d.name} key={d.id} id={d.id} img={d.img}></DialogItem>  )
 
     let messagesElements = props.messages
-        .map( (m) =>  <Message message={m.message}></Message> )
+        .map( (m) =>  <Message message={m.message} key={m.id}></Message> )
 
     let newMessageElem = useRef(null)
 

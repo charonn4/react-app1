@@ -7,7 +7,7 @@ let initialState = {
         {id: 2, message: 'second post', likes: 13},
         {id: 3, message: 'third post', likes: 200},
     ],
-    newPostText: ''
+    newPostText: 'test'
 }
 
 const profileReducer = (state= initialState, action) =>{
@@ -18,14 +18,16 @@ const profileReducer = (state= initialState, action) =>{
                 message: state.newPostText,
                 likes: 0
             }
-            state.posts.push(newPost)
-            state.newPostText = ''
-            // this._callSubscriber(this._state)
-            return state;
+            return {
+                ...state,
+                posts:[...state.posts, newPost],
+                newPostText : ''
+            }
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            // this._callSubscriber(this._state)
-            return state;
+            return {
+                ...state,
+                newPostText : action.newText
+            }
         default:
             return state;
     }
