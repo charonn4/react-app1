@@ -1,0 +1,12 @@
+.usersBlock{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.userInfo{
+    display: flex;
+}
+.imgWrap img{
+    height: 80px;
+    width: 80px;
+}

@@ -16,11 +16,6 @@ let initialState = {
 }
 
 const dialogsReducer = (state=initialState, action) =>{
-    let stateCopy = {
-        ...state,
-        message: [...state.messages]
-    }
-
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
