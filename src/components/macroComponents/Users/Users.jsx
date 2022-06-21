@@ -1,61 +1,74 @@
+import React from "react";
 import style from './Users.module.css'
 import * as axios from "axios";
 import defUser from '../../../assets/images/defUser.png'
 
-const Users = (props) => {
-    let getUsers = () => {
-        if (props.users.length === 0) {
 
-            axios.get('https://social-network.samuraijs.com/api/1.0/users')
-                .then(response => {
-                    props.setUsers(response.data.items)
-                })
-
-            // props.setUsers([
-            //     {
-            //         id: 1,
-            //         photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoPhc-UqiuZfT4V37eO5MVVvSI3D_tUG5dIQ&usqp=CAU',
-            //         followed: false,
-            //         fullName: "Kate",
-            //         status: 'i can help',
-            //         location: {city: 'Almaty', country: 'KZ'}
-            //     }
-            // ])
-        }
+class Users extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
     }
 
-    return (
-        <div className={style.usersBlock}>
-            <button onClick={getUsers}>get users</button>
-            {
-                props.users.map(u => <div className={style.userInfo} key={u.id}>
-                    <div>
-                        <div className={style.imgWrap}>
-                            <img src={u.photos.small != null ? u.photos.small : defUser} alt=""/>
+    onPageChanged = (pageNumber) =>{
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++){
+            pages.push(i)
+        }
+
+        return (
+            <div className={style.usersBlock}>
+                <div className={style.pagination}>
+                    {pages.map(p => {
+                        return <span className={this.props.currentPage === p && style.currentPage} onClick={(e) => {this.onPageChanged(p)}}>{p}</span>
+                    })}
+                </div>
+                {
+                    this.props.users.map(u => <div className={style.userInfo} key={u.id}>
+                        <div>
+                            <div className={style.imgWrap}>
+                                <img src={u.photos.small != null ? u.photos.small : defUser} alt=""/>
+                            </div>
+                            <div>
+                                {u.followed ? <button onClick={() => {
+                                        this.props.unfollow(u.id)
+                                    }}>unfollow</button>
+                                    : <button onClick={() => {
+                                        this.props.follow(u.id)
+                                    }}>follow</button>}
+                            </div>
                         </div>
                         <div>
-                            {u.followed ? <button onClick={() => {
-                                    props.unfollow(u.id)
-                                }}>unfollow</button>
-                                : <button onClick={() => {
-                                    props.follow(u.id)
-                                }}>follow</button>}
+                            <div>
+                                <div>{u.name}</div>
+                                <div>{u.status}</div>
+                            </div>
+                            <div>
+                                <div>{'u.location.country'}</div>
+                                <div>{'u.location.city'}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>{u.name}</div>
-                            <div>{u.status}</div>
-                        </div>
-                        <div>
-                            <div>{'u.location.country'}</div>
-                            <div>{'u.location.city'}</div>
-                        </div>
-                    </div>
-                </div>)
-            }
-        </div>
-    )
+                    </div>)
+                }
+            </div>
+        )
+    }
 }
 
 export default Users

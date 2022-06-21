@@ -21,11 +21,8 @@ let rerenderEntireTree = (state) => {
         </React.StrictMode>
     );
 }
-
-
 // rerenderEntireTree(store.getState())
 rerenderEntireTree()
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

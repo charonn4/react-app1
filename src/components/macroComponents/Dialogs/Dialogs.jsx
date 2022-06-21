@@ -5,7 +5,6 @@ import Message from "./Message/Message";
 import AddContent from "../../microComponents/AddContent/AddContent";
 
 const Dialogs = (props) =>{
-
     let dialogsElements = props.dialogs
         .map( d =>  <DialogItem name={d.name} key={d.id} id={d.id} img={d.img}></DialogItem>  )
 
