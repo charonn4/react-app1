@@ -3,7 +3,23 @@
     width: 100%;
     padding: 8px 16px;
     height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .header img{
     width: 60px;
+}
+.loginBlock{
+    padding: 6px 16px;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: .3s all;
+}
+.loginBlock:hover{
+    background-color: #d5d6d9;
+    transition: .3s all;
+}
+.loginBlock a{
+    text-decoration: none;
 }
