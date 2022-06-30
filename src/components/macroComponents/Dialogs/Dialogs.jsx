@@ -25,6 +25,7 @@ const Dialogs = (props) =>{
         props.updateNewMessageText(text)
     }
 
+
     return(
         <div className={style.dialogs}>
             <div className={style.dialogsItems}>
