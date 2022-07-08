@@ -1,0 +1,17 @@
+.formWrap{
+    padding: 16px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formSummaryError{
+    border: 1px red solid;
+    padding: 5px;
+    color: red;
+    border-radius: 4px;
+}

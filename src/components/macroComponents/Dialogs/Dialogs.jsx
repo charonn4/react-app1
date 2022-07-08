@@ -2,7 +2,8 @@ import React, {useRef} from "react";
 import style from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import AddContent from "../../microComponents/AddContent/AddContent";
+import AddContentFormRedux from "../../microComponents/AddContent/AddContent";
+import {maxLengthCreator} from "../../../utils/validators/validators";
 
 const Dialogs = (props) =>{
     let dialogsElements = props.dialogs
@@ -13,16 +14,8 @@ const Dialogs = (props) =>{
 
     let newMessageElem = useRef(null)
 
-    let addContent = () =>{
-
-        if (props.newMessageText.length > 0){
-            props.addMessage()
-        }
-    }
-
-    let onMessageChange = () =>{
-        let text = newMessageElem.current.value
-        props.updateNewMessageText(text)
+    let addNewMessage = (values) => {
+        props.addMessage(values.newContentText)
     }
 
 
@@ -39,7 +32,8 @@ const Dialogs = (props) =>{
                         messagesElements
                     }
                 </div>
-                <AddContent onChange={onMessageChange} newContentText={props.newMessageText} newContentElem={newMessageElem} addContent={addContent} addMessage={props.addMessage} addBtn='Send' removeBtn='Clear' pHolder='Введите сообщение'></AddContent>
+                <AddContentFormRedux maxLengthCreatorPosts={maxLengthCreator(20)} onSubmit={addNewMessage} newContentText={props.newMessageText} newContentElem={newMessageElem}
+                                     addMessage={props.addMessage} addBtn='Send' pHolder='Введите сообщение'></AddContentFormRedux>
             </div>
         </div>
     )

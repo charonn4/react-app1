@@ -1,7 +1,8 @@
 import React, {useRef} from "react";
 import style from './MyPosts.module.css'
 import Post from "./Post/Post";
-import AddContent from "../../../microComponents/AddContent/AddContent";
+import AddContentFormRedux from "../../../microComponents/AddContent/AddContent";
+import {maxLengthCreator} from "../../../../utils/validators/validators";
 
 const MyPosts = (props) => {
     let postsElements = props.posts
@@ -9,23 +10,14 @@ const MyPosts = (props) => {
 
     let newPostElem = useRef(null)
 
-    let addContent = () =>{
-        if (props.newPostText.length > 0){
-            props.addPost()
-            // props.dispatch(addPostActionCreator())
-        }
-    }
-
-    let onPostChange = () =>{
-        let text = newPostElem.current.value
-        props.updateNewPostText(text)
-        // props.dispatch(updateNewPostActionCreator(text))
+    let addNewPost = (values) =>{
+       props.addPost(values.newContentText)
     }
 
     return (
         <div className={style.postsBlock}>
             <h3>my posts</h3>
-            <AddContent onChange={onPostChange} newContentText={props.newPostText} newContentElem={newPostElem} addContent={addContent} addPost={props.addPost} addBtn='Add Post' removeBtn='Remove Post' pHolder='Что у вас нового?'></AddContent>
+            <AddContentFormRedux maxLengthCreatorPosts={maxLengthCreator(10)} onSubmit={addNewPost} newContentText={props.newPostText} newContentElem={newPostElem} addPost={props.addPost} addBtn='Add Post' pHolder='Что у вас нового?'></AddContentFormRedux>
             <div className={style.posts}>
                 { postsElements }
             </div>
