@@ -1,7 +1,7 @@
 import React from "react";
 import style from './ProfileInfo.module.css'
 import Preloader from "../../../microComponents/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) =>{
     if(!props.profile){
@@ -19,7 +19,7 @@ const ProfileInfo = (props) =>{
                     {/*    <span className={style.semibold}>Статус:</span>*/}
                     {/*    <span>{props.profile.aboutMe}</span>*/}
                     {/*</div>*/}
-                    <ProfileStatus status={props.status} updateStatus={props.updateStatus}></ProfileStatus>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}></ProfileStatusWithHooks>
                     <div>
                         <span className={style.subHeaderText}>Основная информация</span>
                         <div className={style.information}>

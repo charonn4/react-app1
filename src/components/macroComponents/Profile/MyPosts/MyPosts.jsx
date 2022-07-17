@@ -5,7 +5,8 @@ import AddContentFormRedux from "../../../microComponents/AddContent/AddContent"
 import {maxLengthCreator} from "../../../../utils/validators/validators";
 
 const MyPosts = (props) => {
-    let postsElements = props.posts
+    let postsElements = [...props.posts]
+        .reverse()
         .map( p => <Post message={p.message} key={p.id} likes={p.likes}/> )
 
     let newPostElem = useRef(null)
