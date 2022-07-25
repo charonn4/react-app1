@@ -10,9 +10,3 @@
     height: 80px;
     width: 80px;
 }
-.pagination span{
-    cursor: pointer;
-}
-.currentPage{
-    font-weight: 700;
-}
