@@ -12,6 +12,8 @@
 }
 .avatarWrap img{
     width: 100%;
+    max-width: 230px;
+    max-height: 230px;
 }
 .infoAboutUser{
     display: flex;
@@ -28,4 +30,27 @@
 }
 .semibold{
     font-weight: 600;
+}
+.statusWrap{
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+.infoAndStatus{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.formSummaryError{
+    border: 2px solid red;
+    color: red;
+}
+
+.formControl.error input,
+.formControl.error textarea{
+    border: 2px solid red;
+}
+.formControl.error span,
+.formControl.error span{
+    color: red;
 }

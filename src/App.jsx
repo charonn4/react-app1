@@ -4,7 +4,7 @@ import NavBar from "./components/macroComponents/NavBar/NavBar";
 import UsersContainer from "./components/macroComponents/Users/UsersContainer";
 import News from "./components/macroComponents/News/News";
 import Music from "./components/macroComponents/Music/Music";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
 import Settings from "./components/macroComponents/Settings/Settings";
 import HeaderContainer from "./components/macroComponents/Header/HeaderContainer";
 import Login from "./components/macroComponents/Login/Login";

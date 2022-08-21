@@ -20,7 +20,8 @@ const Paginator = ({totalItemsCount, pageSize, currentPage,onPageChanged, portio
             { portionNumber > 1 &&
                 <button onClick={() => {setPortionNumber(portionNumber - 1)}}>PREV</button>
             }
-            {pages.filter(p => p >=leftPortionPageNumber && p <=rightPortionPageNumber)
+            {pages
+                .filter(p => p >=leftPortionPageNumber && p <=rightPortionPageNumber)
                 .map( (p) => {
                 return <span className={cn({[style.currentPage] : currentPage === p}, style.pageNumber)} key={p} onClick={(e) => {
                     onPageChanged(p)
