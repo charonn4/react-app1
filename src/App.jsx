@@ -4,7 +4,7 @@ import NavBar from "./components/macroComponents/NavBar/NavBar";
 import UsersContainer from "./components/macroComponents/Users/UsersContainer";
 import News from "./components/macroComponents/News/News";
 import Music from "./components/macroComponents/Music/Music";
-import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import Settings from "./components/macroComponents/Settings/Settings";
 import HeaderContainer from "./components/macroComponents/Header/HeaderContainer";
 import Login from "./components/macroComponents/Login/Login";
@@ -17,8 +17,17 @@ const DialogsContainer = React.lazy(() => import('./components/macroComponents/D
 const ProfileContainer = React.lazy(() => import('./components/macroComponents/Profile/ProfileContainer'));
 
 class App extends React.Component {
+    catchAllUnhandledErrors = (reason, promise) =>{
+        console.log('some error')
+        // console.error(promiseRejectionEvent)
+    }
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -34,14 +43,16 @@ class App extends React.Component {
                     <div className="pages">
                         <Suspense fallback={<Preloader/>}>
                             <Routes>
+                                <Route exact path="/" element={<Navigate to={'/profile'} /> } />
                                 <Route path='/profile/:userId' element={<ProfileContainer/>}/>
-                                <Route path='/profile/*' element={<ProfileContainer/>}/>
-                                <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-                                <Route path='/users/*' element={<UsersContainer/>}/>
-                                <Route path='/news/*' element={<News/>}/>
-                                <Route path='/music/*' element={<Music/>}/>
-                                <Route path='/settings/*' element={<Settings/>}/>
-                                <Route path='/login/*' element={<Login/>}/>
+                                <Route path='/profile' element={<ProfileContainer/>}/>
+                                <Route path='/dialogs' element={<DialogsContainer/>}/>
+                                <Route path='/users' element={<UsersContainer/>}/>
+                                <Route path='/news' element={<News/>}/>
+                                <Route path='/music' element={<Music/>}/>
+                                <Route path='/settings' element={<Settings/>}/>
+                                <Route path='/login' element={<Login/>}/>
+                                <Route path='*' element={<div>404 NOT FOUND</div>}/>
                             </Routes>
                         </Suspense>
                     </div>
@@ -58,7 +69,7 @@ const mapStateToProps = (state) => ({
 
 let AppContainer = connect(mapStateToProps, {initializeApp})(App)
 
-const MainApp = (props) =>{
+const MainApp = () =>{
  return(
      <BrowserRouter>
          <Provider store={store}>
